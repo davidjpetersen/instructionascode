@@ -2,6 +2,7 @@
 import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
 
 import { LinkCard } from '@astrojs/starlight/components';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
 import { getKnowledgeGraph } from '../../../lib/knowledgeGraph';
 import { buildTaxonomySidebar } from '../../../lib/taxonomyUi';
 import CopyableUri from '../../../components/CopyableUri.astro';
@@ -34,6 +35,14 @@ const leadVerbs = firstLevel ? graph.getVerbsForLevel(firstLevel.taxonomyId, fir
 		<p>The requested taxonomy scheme was not found in the compiled registry.</p>
 	) : (
 		<>
+			<Breadcrumbs
+				items={[
+					{ label: 'Instruction as Code', href: '/' },
+					{ label: 'Taxonomies', href: '/taxonomy/' },
+					{ label: scheme.label },
+				]}
+			/>
+
 			<p>{scheme.description}</p>
 
 			

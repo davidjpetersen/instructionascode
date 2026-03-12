@@ -2,6 +2,7 @@
 import StarlightPage from "@astrojs/starlight/components/StarlightPage.astro";
 import { LinkCard, CardGrid } from "@astrojs/starlight/components";
 
+import Breadcrumbs from "../../components/Breadcrumbs.astro";
 import { getKnowledgeGraph } from "../../lib/knowledgeGraph";
 import { buildTaxonomySidebar } from "../../lib/taxonomyUi";
 
@@ -16,6 +17,8 @@ const sidebar = buildTaxonomySidebar(graph);
   }}
   sidebar={sidebar}
 >
+  <Breadcrumbs items={[{ label: "Instruction as Code", href: "/" }, { label: "Taxonomies" }]} />
+
   <p>
     Learning taxonomies are one facet of Instruction as Code. This registry
     publishes stable canonical identifiers for taxonomy schemes, levels, and

@@ -1,6 +1,7 @@
 ---
 import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
 
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
 import { getKnowledgeGraph } from '../../../lib/knowledgeGraph';
 import { buildTaxonomySidebar } from '../../../lib/taxonomyUi';
 
@@ -33,6 +34,15 @@ const children = level ? graph.getChildrenForLevel(level) : [];
 		<p>The requested taxonomy level was not found in the compiled registry.</p>
 	) : (
 		<>
+			<Breadcrumbs
+				items={[
+					{ label: 'Instruction as Code', href: '/' },
+					{ label: 'Taxonomies', href: '/taxonomy/' },
+					{ label: scheme.label, href: `/taxonomy/${scheme.id}/` },
+					{ label: level.label },
+				]}
+			/>
+
 			<p>{level.definition}</p>
 			<p>
 				Canonical level URI:
