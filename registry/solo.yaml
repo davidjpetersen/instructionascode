@@ -1,0 +1,69 @@
+taxonomy: solo
+label: SOLO Taxonomy
+description: A structure-of-observed-learning-outcomes taxonomy that tracks increasing complexity in learner understanding.
+levels:
+  - id: prestructural
+    order: 1
+    definition: The learner response misses the point or shows little relevant understanding.
+    example: Provide an unrelated or fragmented response.
+    cognitiveComplexity: Minimal structure
+    verbs:
+      - id: recognize
+        definition: Notice a surface feature without building a valid structure.
+      - id: name
+        definition: State a term without demonstrating connected understanding.
+  - id: unistructural
+    order: 2
+    definition: Focus on one relevant aspect of a task or concept.
+    example: Use a single idea to address part of a problem.
+    cognitiveComplexity: Single-point understanding
+    verbs:
+      - id: identify
+        definition: Point to one relevant element or feature.
+      - id: follow
+        definition: Proceed using one obvious cue or rule.
+  - id: multistructural
+    order: 3
+    definition: Work with several relevant aspects, but without integrating them.
+    example: List multiple causes without relating them.
+    cognitiveComplexity: Multiple disconnected elements
+    mappings:
+      - type: closeMatch
+        target: bloom/understand
+    verbs:
+      - id: describe
+        definition: State several relevant details.
+      - id: list
+        definition: Present multiple items or ideas side by side.
+      - id: combine
+        definition: Bring pieces together without full integration.
+  - id: relational
+    order: 4
+    definition: Integrate parts into a coherent structure and explain relationships.
+    example: Show how concepts influence one another in a system.
+    cognitiveComplexity: Integrated understanding
+    mappings:
+      - type: closeMatch
+        target: bloom/analyze
+    verbs:
+      - id: compare
+        definition: Relate dimensions across items to reveal structure.
+      - id: relate
+        definition: Explain meaningful connections among parts.
+      - id: analyze
+        definition: Interpret the organization of a whole from its components.
+  - id: extended-abstract
+    order: 5
+    definition: Generalize, theorize, or transfer understanding to new domains.
+    example: Derive a principle and apply it in a novel setting.
+    cognitiveComplexity: Abstraction and transfer
+    mappings:
+      - type: closeMatch
+        target: bloom/create
+    verbs:
+      - id: theorize
+        definition: Form a principle or model from integrated understanding.
+      - id: generalize
+        definition: Extend an idea beyond the original context.
+      - id: transfer
+        definition: Apply a principle across settings or domains.

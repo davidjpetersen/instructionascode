@@ -1,0 +1,36 @@
+---
+import StarlightPage from "@astrojs/starlight/components/StarlightPage.astro";
+import { LinkCard, CardGrid } from "@astrojs/starlight/components";
+
+import { getKnowledgeGraph } from "../../lib/knowledgeGraph";
+import { buildTaxonomySidebar } from "../../lib/taxonomyUi";
+
+const graph = await getKnowledgeGraph();
+const sidebar = buildTaxonomySidebar(graph);
+---
+
+<StarlightPage
+  frontmatter={{
+    title: "Taxonomy Index",
+    description: "Browse the learning taxonomy facet of Instruction as Code.",
+  }}
+  sidebar={sidebar}
+>
+  <p>
+    Learning taxonomies are one facet of Instruction as Code. This registry
+    publishes stable canonical identifiers for taxonomy schemes, levels, and
+    verbs, with content negotiation for HTML, JSON, JSON-LD, and Turtle.
+  </p>
+
+  <CardGrid>
+    {
+      graph.schemes.map((scheme) => (
+        <LinkCard
+          title={scheme.label}
+          href={`/taxonomy/${scheme.id}/`}
+          description={scheme.description}
+        />
+      ))
+    }
+  </CardGrid>
+</StarlightPage>

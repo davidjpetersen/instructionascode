@@ -1,0 +1,46 @@
+taxonomy: miller
+label: Miller's Pyramid
+description: A clinical education taxonomy that describes progression from knowledge to authentic performance.
+levels:
+  - id: knows
+    order: 1
+    definition: Possess factual or conceptual knowledge.
+    example: Recall indications for a procedure.
+    cognitiveComplexity: Foundational knowledge
+    verbs:
+      - id: recall
+        definition: Retrieve a fact or concept from memory.
+      - id: define
+        definition: State the meaning of a term or principle.
+  - id: knows-how
+    label: Knows How
+    order: 2
+    definition: Explain how to use knowledge in context.
+    example: Explain how a procedure should be carried out.
+    cognitiveComplexity: Applied explanation
+    verbs:
+      - id: explain
+        definition: Describe how knowledge should be used.
+      - id: plan
+        definition: Outline a course of action in context.
+  - id: shows-how
+    label: Shows How
+    order: 3
+    definition: Demonstrate performance in a controlled or simulated setting.
+    example: Perform a skill in an OSCE or simulation.
+    cognitiveComplexity: Demonstrated performance
+    verbs:
+      - id: demonstrate
+        definition: Show the required action or behavior in a controlled setting.
+      - id: perform
+        definition: Execute a task under observation.
+  - id: does
+    order: 4
+    definition: Perform competently in authentic professional practice.
+    example: Carry out a clinical task reliably in real care settings.
+    cognitiveComplexity: Authentic practice
+    verbs:
+      - id: enact
+        definition: Carry out a task in an authentic environment.
+      - id: practice
+        definition: Deliver the expected performance in context.

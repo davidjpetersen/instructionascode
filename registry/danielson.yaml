@@ -1,0 +1,48 @@
+taxonomy: danielson
+label: Danielson Framework
+description: A professional practice framework that organizes teaching performance into four domains.
+levels:
+  - id: planning-and-preparation
+    label: Planning and Preparation
+    order: 1
+    definition: Design instruction, assessments, and resources intentionally.
+    example: Prepare coherent learning experiences and evidence of learning.
+    cognitiveComplexity: Instructional planning
+    verbs:
+      - id: design
+        definition: Plan instruction and assessment coherently.
+      - id: align
+        definition: Ensure objectives, instruction, and assessment fit together.
+  - id: classroom-environment
+    label: Classroom Environment
+    order: 2
+    definition: Establish a culture and structure that supports learning.
+    example: Create routines, norms, and relationships that enable engagement.
+    cognitiveComplexity: Learning environment
+    verbs:
+      - id: establish
+        definition: Create routines, expectations, and norms.
+      - id: support
+        definition: Maintain conditions that enable learning.
+  - id: instruction
+    label: Instruction
+    order: 3
+    definition: Facilitate learning through questioning, discussion, and responsive teaching.
+    example: Engage learners in meaningful discourse and feedback.
+    cognitiveComplexity: Teaching enactment
+    verbs:
+      - id: facilitate
+        definition: Guide learning activity in real time.
+      - id: question
+        definition: Use prompts that surface learner thinking.
+  - id: professional-responsibilities
+    label: Professional Responsibilities
+    order: 4
+    definition: Reflect, collaborate, and contribute responsibly to the profession.
+    example: Analyze practice and communicate professionally with stakeholders.
+    cognitiveComplexity: Professional reflection
+    verbs:
+      - id: reflect
+        definition: Analyze practice to improve future performance.
+      - id: communicate
+        definition: Engage stakeholders with clarity and professionalism.

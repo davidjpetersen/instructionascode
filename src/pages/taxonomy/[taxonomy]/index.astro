@@ -1,0 +1,74 @@
+---
+import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
+
+import { LinkCard } from '@astrojs/starlight/components';
+import { getKnowledgeGraph } from '../../../lib/knowledgeGraph';
+import { buildTaxonomySidebar } from '../../../lib/taxonomyUi';
+import CopyableUri from '../../../components/CopyableUri.astro';
+
+export const prerender = false;
+
+const graph = await getKnowledgeGraph();
+const sidebar = buildTaxonomySidebar(graph);
+const taxonomyId = Astro.params.taxonomy ?? '';
+const scheme = graph.getScheme(taxonomyId);
+
+if (!scheme) {
+	Astro.response.status = 404;
+}
+
+const levels = scheme ? graph.getLevelsForTaxonomy(scheme.id) : [];
+const firstLevel = levels[0];
+const leadVerbs = firstLevel ? graph.getVerbsForLevel(firstLevel.taxonomyId, firstLevel.id) : [];
+---
+
+<StarlightPage
+	frontmatter={{
+		title: scheme?.label ?? 'Taxonomy Not Found',
+		description: scheme?.description ?? 'The requested taxonomy identifier does not exist.',
+	}}
+	sidebar={sidebar}
+>
+
+	{!scheme ? (
+		<p>The requested taxonomy scheme was not found in the compiled registry.</p>
+	) : (
+		<>
+			<p>{scheme.description}</p>
+
+			
+
+			<h2>Registered Levels</h2>
+
+				{levels.map((level) => (
+					<LinkCard
+						title={level.label}
+						href={`/taxonomy/${scheme.id}/${level.id}`}
+						description={level.definition}
+					/>
+				))}
+
+
+			{firstLevel && leadVerbs.length > 0 && (
+				<>
+					<h2>Representative Verbs</h2>
+					<p>
+						Examples from the first registered level,
+						<a href={`/taxonomy/${firstLevel.taxonomyId}/${firstLevel.id}`}> {firstLevel.label}</a>.
+					</p>
+					<ul>
+						{leadVerbs.map((verb) => (
+							<li>
+								<a href={`/taxonomy/${firstLevel.taxonomyId}/${firstLevel.id}/${verb.id}`}>{verb.label}</a>
+								{verb.definition && <>: {verb.definition}</>}
+							</li>
+						))}
+					</ul>
+				</>
+			)}
+
+			<h2>Canonical URI</h2>
+			<CopyableUri uri={scheme.uri} />
+		</>
+	)}
+</StarlightPage>

@@ -1,0 +1,79 @@
+---
+import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
+
+import { getKnowledgeGraph } from '../../../../lib/knowledgeGraph';
+import { buildTaxonomySidebar } from '../../../../lib/taxonomyUi';
+
+export const prerender = false;
+
+const graph = await getKnowledgeGraph();
+const sidebar = buildTaxonomySidebar(graph);
+const taxonomyId = Astro.params.taxonomy ?? '';
+const levelId = Astro.params.level ?? '';
+const verbId = Astro.params.verb ?? '';
+const scheme = graph.getScheme(taxonomyId);
+const level = graph.getLevel(taxonomyId, levelId);
+const verb = graph.getVerb(taxonomyId, levelId, verbId);
+
+if (!scheme || !level || !verb) {
+	Astro.response.status = 404;
+}
+---
+
+<StarlightPage
+	frontmatter={{
+		title: verb?.label ?? 'Taxonomy Verb Not Found',
+		description: verb?.definition ?? 'The requested taxonomy verb does not exist.',
+	}}
+	sidebar={sidebar}
+>
+	{!scheme || !level || !verb ? (
+		<p>The requested taxonomy verb was not found in the compiled registry.</p>
+	) : (
+		<>
+			<p>{verb.definition}</p>
+			<p>
+				Canonical verb URI:
+				<a href={verb.uri}>{verb.uri}</a>
+			</p>
+
+			<h2>Verb Metadata</h2>
+			<dl>
+				<dt>Taxonomy</dt>
+				<dd><a href={`/taxonomy/${scheme.id}/`}>{scheme.label}</a></dd>
+				<dt>Belongs To Level</dt>
+				<dd><a href={`/taxonomy/${scheme.id}/${level.id}`}>{level.label}</a></dd>
+				{verb.example && (
+					<>
+						<dt>Example</dt>
+						<dd>{verb.example}</dd>
+					</>
+				)}
+			</dl>
+
+			<h2>Cross-Taxonomy Mappings</h2>
+			{verb.mappings.length === 0 ? (
+				<p>No mappings have been asserted for this concept.</p>
+			) : (
+				<ul>
+					{verb.mappings.map((mapping) => {
+						const target = graph.resolveConceptByPath(
+							mapping.targetTaxonomy,
+							mapping.targetLevel,
+							mapping.targetVerb
+						);
+						return (
+							<li>
+								<strong>{mapping.property}</strong>
+								{': '}
+								<a href={target ? target.uri.replace('https://id.instructionascode.com', '') : mapping.targetUri}>
+									{target?.label ?? mapping.targetUri}
+								</a>
+							</li>
+						);
+					})}
+				</ul>
+			)}
+		</>
+	)}
+</StarlightPage>

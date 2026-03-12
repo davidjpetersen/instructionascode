@@ -1,0 +1,69 @@
+taxonomy: marzano-kendall
+label: Marzano and Kendall New Taxonomy
+description: A taxonomy that combines processing levels with systems of self, metacognition, and cognition.
+levels:
+  - id: retrieval
+    order: 1
+    definition: Recognize or recall information and procedures.
+    example: Recall terminology and basic facts.
+    cognitiveComplexity: Retrieval
+    verbs:
+      - id: recognize
+        definition: Distinguish a correct fact or feature.
+      - id: recall
+        definition: Retrieve stored knowledge.
+  - id: comprehension
+    order: 2
+    definition: Integrate and symbolize knowledge to make meaning.
+    example: Explain an idea in one's own words.
+    cognitiveComplexity: Comprehension
+    verbs:
+      - id: summarize
+        definition: Compress information while preserving meaning.
+      - id: represent
+        definition: Show meaning in another form.
+  - id: analysis
+    order: 3
+    definition: Match, classify, or reason about patterns and errors.
+    example: Examine how parts align with a concept or rule.
+    cognitiveComplexity: Analytical processing
+    verbs:
+      - id: classify
+        definition: Group elements by shared characteristics.
+      - id: analyze
+        definition: Investigate relationships and patterns.
+  - id: knowledge-utilization
+    label: Knowledge Utilization
+    order: 4
+    definition: Use knowledge to decide, problem solve, experiment, or investigate.
+    example: Evaluate competing solutions and choose an approach.
+    cognitiveComplexity: Decision and inquiry
+    mappings:
+      - type: closeMatch
+        target: bloom/evaluate
+    verbs:
+      - id: decide
+        definition: Choose a course of action from alternatives.
+      - id: investigate
+        definition: Use knowledge to explore a problem or question.
+  - id: metacognition
+    order: 5
+    definition: Monitor clarity, goals, and strategies for learning or performance.
+    example: Set goals and regulate progress intentionally.
+    cognitiveComplexity: Metacognitive regulation
+    verbs:
+      - id: monitor
+        definition: Track understanding or performance over time.
+      - id: regulate
+        definition: Adjust strategy or effort intentionally.
+  - id: self-system
+    label: Self-System
+    order: 6
+    definition: Weigh importance, efficacy, and emotion in deciding whether to engage.
+    example: Determine whether a task matters enough to pursue.
+    cognitiveComplexity: Motivational appraisal
+    verbs:
+      - id: commit
+        definition: Decide to engage based on value and belief.
+      - id: prioritize
+        definition: Judge relative importance before acting.

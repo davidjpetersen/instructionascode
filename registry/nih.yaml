@@ -1,0 +1,64 @@
+taxonomy: nih
+label: NIH Cognitive Levels
+description: A practical hierarchy used in NIH training and evaluation materials to distinguish cognitive demand.
+levels:
+  - id: knowledge
+    order: 1
+    definition: Recall facts, terminology, and concepts.
+    example: Identify key terms from a scientific domain.
+    cognitiveComplexity: Knowledge recall
+    verbs:
+      - id: identify
+        definition: Recognize the correct fact or concept.
+      - id: define
+        definition: State the meaning of a concept.
+  - id: comprehension
+    order: 2
+    definition: Explain meaning and interpret information.
+    example: Summarize a study finding accurately.
+    cognitiveComplexity: Comprehension
+    verbs:
+      - id: summarize
+        definition: Restate information accurately and briefly.
+      - id: explain
+        definition: Clarify how an idea works.
+  - id: application
+    order: 3
+    definition: Use knowledge to solve a problem or perform a task.
+    example: Apply a method to a new research scenario.
+    cognitiveComplexity: Applied use
+    verbs:
+      - id: use
+        definition: Apply a method or concept in context.
+      - id: calculate
+        definition: Carry out a procedure to obtain a result.
+  - id: analysis
+    order: 4
+    definition: Break information into parts and interpret relationships.
+    example: Analyze study design choices and implications.
+    cognitiveComplexity: Analytical reasoning
+    verbs:
+      - id: analyze
+        definition: Examine parts and relationships systematically.
+      - id: differentiate
+        definition: Distinguish important features or conditions.
+  - id: synthesis
+    order: 5
+    definition: Integrate elements into a new structure or proposal.
+    example: Propose a new research design from existing findings.
+    cognitiveComplexity: Synthesis
+    verbs:
+      - id: propose
+        definition: Present an original integrated idea or plan.
+      - id: design
+        definition: Compose a new approach or structure.
+  - id: evaluation
+    order: 6
+    definition: Judge the quality, validity, or significance of information.
+    example: Critique the strength of evidence in a publication.
+    cognitiveComplexity: Evaluation
+    verbs:
+      - id: critique
+        definition: Judge strengths and weaknesses against criteria.
+      - id: appraise
+        definition: Determine significance or quality carefully.

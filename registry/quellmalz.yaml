@@ -1,0 +1,44 @@
+taxonomy: quellmalz
+label: Quellmalz Cognitive Demand
+description: A taxonomy focused on the cognitive demand involved in academic tasks and assessments.
+levels:
+  - id: recall
+    order: 1
+    definition: Retrieve information or execute a memorized routine.
+    example: State a fact or perform a basic procedure.
+    cognitiveComplexity: Recall
+    verbs:
+      - id: identify
+        definition: Select the correct response from memory.
+      - id: state
+        definition: Express a fact or rule directly.
+  - id: analysis
+    order: 2
+    definition: Examine relationships, structure, or evidence in information.
+    example: Distinguish cause and effect in a text.
+    cognitiveComplexity: Analysis
+    verbs:
+      - id: examine
+        definition: Inspect an idea or artifact carefully.
+      - id: compare
+        definition: Analyze relevant similarities and differences.
+  - id: critique
+    order: 3
+    definition: Evaluate quality, credibility, or effectiveness using criteria.
+    example: Judge the strength of evidence in an argument.
+    cognitiveComplexity: Critique
+    verbs:
+      - id: evaluate
+        definition: Judge quality using standards.
+      - id: defend
+        definition: Support an evaluative conclusion.
+  - id: generation
+    order: 4
+    definition: Produce an original response, plan, or solution.
+    example: Design a novel product or explanation.
+    cognitiveComplexity: Generation
+    verbs:
+      - id: generate
+        definition: Produce an original response or product.
+      - id: design
+        definition: Construct a novel solution or plan.

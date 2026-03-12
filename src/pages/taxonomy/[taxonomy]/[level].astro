@@ -1,0 +1,121 @@
+---
+import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
+
+import { getKnowledgeGraph } from '../../../lib/knowledgeGraph';
+import { buildTaxonomySidebar } from '../../../lib/taxonomyUi';
+
+export const prerender = false;
+
+const graph = await getKnowledgeGraph();
+const sidebar = buildTaxonomySidebar(graph);
+const taxonomyId = Astro.params.taxonomy ?? '';
+const levelId = Astro.params.level ?? '';
+const scheme = graph.getScheme(taxonomyId);
+const level = graph.getLevel(taxonomyId, levelId);
+
+if (!scheme || !level) {
+	Astro.response.status = 404;
+}
+
+const verbs = level ? graph.getVerbsForLevel(level.taxonomyId, level.id) : [];
+const parent = level ? graph.getParentForLevel(level) : undefined;
+const children = level ? graph.getChildrenForLevel(level) : [];
+---
+
+<StarlightPage
+	frontmatter={{
+		title: level?.label ?? 'Taxonomy Level Not Found',
+		description: level?.definition ?? 'The requested taxonomy level does not exist.',
+	}}
+	sidebar={sidebar}
+>
+	{!scheme || !level ? (
+		<p>The requested taxonomy level was not found in the compiled registry.</p>
+	) : (
+		<>
+			<p>{level.definition}</p>
+			<p>
+				Canonical level URI:
+				<a href={level.uri}>{level.uri}</a>
+			</p>
+
+			<h2>Level Metadata</h2>
+			<dl>
+				<dt>Taxonomy</dt>
+				<dd><a href={`/taxonomy/${scheme.id}/`}>{scheme.label}</a></dd>
+				<dt>Order</dt>
+				<dd>{level.order}</dd>
+				{level.cognitiveComplexity && (
+					<>
+						<dt>Cognitive Complexity</dt>
+						<dd>{level.cognitiveComplexity}</dd>
+					</>
+				)}
+				{parent && (
+					<>
+						<dt>Broader</dt>
+						<dd><a href={`/taxonomy/${scheme.id}/${parent.id}`}>{parent.label}</a></dd>
+					</>
+				)}
+				{children[0] && (
+					<>
+						<dt>Narrower</dt>
+						<dd><a href={`/taxonomy/${scheme.id}/${children[0].id}`}>{children[0].label}</a></dd>
+					</>
+				)}
+			</dl>
+
+			<h2>Hierarchy</h2>
+			<ol>
+				{graph.getLevelsForTaxonomy(scheme.id).map((candidate) => (
+					<li>
+						{candidate.id === level.id ? (
+							<strong>{candidate.label}</strong>
+						) : (
+							<a href={`/taxonomy/${scheme.id}/${candidate.id}`}>{candidate.label}</a>
+						)}
+						{' '}({candidate.order})
+					</li>
+				))}
+			</ol>
+
+			<h2>Example Verbs</h2>
+			{verbs.length === 0 ? (
+				<p>No verbs have been registered for this level yet.</p>
+			) : (
+				<ul>
+					{verbs.map((verb) => (
+						<li>
+							<a href={`/taxonomy/${taxonomyId}/${levelId}/${verb.id}`}>{verb.label}</a>
+							{verb.definition && <>: {verb.definition}</>}
+						</li>
+					))}
+				</ul>
+			)}
+
+			<h2>Cross-Taxonomy Mappings</h2>
+			{level.mappings.length === 0 ? (
+				<p>No mappings have been asserted for this concept.</p>
+			) : (
+				<ul>
+					{level.mappings.map((mapping) => {
+						const target = graph.resolveConceptByPath(
+							mapping.targetTaxonomy,
+							mapping.targetLevel,
+							mapping.targetVerb
+						);
+						return (
+							<li>
+								<strong>{mapping.property}</strong>
+								{': '}
+								<a href={target ? target.uri.replace('https://id.instructionascode.com', '') : mapping.targetUri}>
+									{target?.label ?? mapping.targetUri}
+								</a>
+							</li>
+						);
+					})}
+				</ul>
+			)}
+		</>
+	)}
+</StarlightPage>

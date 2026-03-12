@@ -1,0 +1,103 @@
+taxonomy: bloom
+label: Bloom's Taxonomy
+description: A six-level cognitive taxonomy widely used to classify learning objectives and assessment intent.
+altLabels:
+  - Revised Bloom
+levels:
+  - id: remember
+    order: 1
+    definition: Recall facts, terms, and basic concepts from memory.
+    example: Recall the steps of a process from memory.
+    cognitiveComplexity: Foundational recall
+    mappings:
+      - type: closeMatch
+        target: webb/1
+    verbs:
+      - id: define
+        definition: State the meaning of a term or concept.
+      - id: list
+        definition: Produce items from memory without elaboration.
+      - id: recall
+        definition: Retrieve previously learned information.
+  - id: understand
+    order: 2
+    definition: Construct meaning from messages, models, or explanations.
+    example: Summarize the main point of a reading.
+    cognitiveComplexity: Interpretive comprehension
+    mappings:
+      - type: closeMatch
+        target: solo/multistructural
+    verbs:
+      - id: summarize
+        definition: Condense material while preserving its meaning.
+      - id: explain
+        definition: Make an idea understandable in one's own words.
+      - id: classify
+        definition: Sort items into meaningful categories.
+  - id: apply
+    order: 3
+    definition: Use a learned method or principle in a concrete situation.
+    example: Use a formula to solve a familiar problem.
+    cognitiveComplexity: Procedural transfer
+    mappings:
+      - type: closeMatch
+        target: webb/2
+    verbs:
+      - id: implement
+        definition: Carry out a procedure in context.
+      - id: use
+        definition: Apply an idea, tool, or rule to a task.
+      - id: solve
+        definition: Produce a correct result using known methods.
+  - id: analyze
+    order: 4
+    definition: Break material into parts and determine how those parts relate to one another.
+    example: Distinguish claims, evidence, and assumptions in an argument.
+    cognitiveComplexity: Relational reasoning
+    mappings:
+      - type: closeMatch
+        target: webb/3
+      - type: closeMatch
+        target: solo/relational
+    verbs:
+      - id: compare
+        definition: Identify meaningful similarities and differences.
+        mappings:
+          - type: closeMatch
+            target: solo/relational/compare
+      - id: differentiate
+        definition: Separate relevant parts according to function or role.
+      - id: examine
+        definition: Inspect evidence or structure carefully.
+  - id: evaluate
+    order: 5
+    definition: Make judgments using criteria and standards.
+    example: Critique a design against a rubric.
+    cognitiveComplexity: Criteria-based judgment
+    mappings:
+      - type: closeMatch
+        target: marzano-kendall/knowledge-utilization
+    verbs:
+      - id: critique
+        definition: Judge strengths and weaknesses against criteria.
+      - id: justify
+        definition: Support a conclusion with reasons and evidence.
+      - id: assess
+        definition: Determine quality or effectiveness.
+  - id: create
+    order: 6
+    definition: Put elements together to form a coherent or original product.
+    example: Design an original solution for an open-ended problem.
+    cognitiveComplexity: Generative synthesis
+    mappings:
+      - type: closeMatch
+        target: webb/4
+      - type: closeMatch
+        target: solo/extended-abstract
+    verbs:
+      - id: design
+        definition: Plan and compose a new artifact or approach.
+      - id: construct
+        definition: Build an integrated product from components.
+      - id: compose
+        definition: Create a coherent original whole.

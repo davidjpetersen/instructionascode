@@ -1,0 +1,70 @@
+taxonomy: webb
+label: Webb Depth of Knowledge
+description: A four-level taxonomy that emphasizes task complexity and the depth of cognitive processing required.
+altLabels:
+  - DOK
+levels:
+  - id: 1
+    label: Recall and Reproduction
+    order: 1
+    definition: Perform simple recall or execute a routine procedure.
+    example: Recall a fact, formula, or definition.
+    cognitiveComplexity: Surface recall
+    mappings:
+      - type: closeMatch
+        target: bloom/remember
+    verbs:
+      - id: identify
+        definition: Recognize the correct item or fact.
+      - id: recall
+        definition: Retrieve a fact or step from memory.
+      - id: reproduce
+        definition: Carry out a routine reproduction of knowledge.
+  - id: 2
+    label: Skills and Concepts
+    order: 2
+    definition: Use information, conceptual knowledge, or skills in a familiar setting.
+    example: Organize information and apply a learned routine.
+    cognitiveComplexity: Applied understanding
+    mappings:
+      - type: closeMatch
+        target: bloom/apply
+    verbs:
+      - id: organize
+        definition: Arrange information into a meaningful structure.
+      - id: apply
+        definition: Use a concept or skill in a familiar context.
+      - id: estimate
+        definition: Derive a reasonable value or conclusion.
+  - id: 3
+    label: Strategic Thinking
+    order: 3
+    definition: Reason strategically, justify responses, and explain decision paths.
+    example: Analyze options and defend the best approach.
+    cognitiveComplexity: Strategic reasoning
+    mappings:
+      - type: closeMatch
+        target: bloom/analyze
+    verbs:
+      - id: justify
+        definition: Support a choice with reasoning.
+      - id: analyze
+        definition: Investigate structure, evidence, or relationship.
+      - id: revise
+        definition: Improve a response after strategic review.
+  - id: 4
+    label: Extended Thinking
+    order: 4
+    definition: Conduct complex investigation, synthesis, or problem solving across time.
+    example: Develop and test a solution that integrates multiple sources.
+    cognitiveComplexity: Extended inquiry
+    mappings:
+      - type: closeMatch
+        target: bloom/create
+    verbs:
+      - id: synthesize
+        definition: Integrate multiple sources into a coherent whole.
+      - id: design
+        definition: Produce a sustained solution or investigation plan.
+      - id: connect
+        definition: Link ideas across domains, cases, or evidence sets.

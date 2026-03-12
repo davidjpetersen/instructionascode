@@ -1,26 +1,31 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
+import node from '@astrojs/node';
 import starlight from '@astrojs/starlight';
+import starlightTelescope from 'starlight-telescope';
 
 // https://astro.build/config
 export default defineConfig({
+	site: 'https://id.instructionascode.com',
+	output: 'server',
+	adapter: node({
+		mode: 'standalone',
+	}),
 	integrations: [
 		starlight({
-			title: 'My Docs',
-			social: [{ icon: 'github', label: 'GitHub', href: 'https://github.com/withastro/starlight' }],
+			title: 'Instruction as Code',
+			description:
+				'Instruction as Code documentation, registries, and linked-data services for learning systems.',
 			sidebar: [
 				{
-					label: 'Guides',
+					label: 'Registry',
 					items: [
-						// Each item here is one entry in the navigation menu.
-						{ label: 'Example Guide', slug: 'guides/example' },
+						{ label: 'Overview', slug: '' },
+						{ label: 'Taxonomy Index', link: '/taxonomy/' },
 					],
 				},
-				{
-					label: 'Reference',
-					autogenerate: { directory: 'reference' },
-				},
 			],
+			plugins: [starlightTelescope()],
 		}),
 	],
 });

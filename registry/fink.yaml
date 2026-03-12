@@ -1,0 +1,70 @@
+taxonomy: fink
+label: Fink Significant Learning
+description: A taxonomy of significant learning that emphasizes integrated, transformative forms of learning.
+levels:
+  - id: foundational-knowledge
+    label: Foundational Knowledge
+    order: 1
+    definition: Understand and remember information and ideas.
+    example: Recall core concepts and explain major terms.
+    cognitiveComplexity: Foundational comprehension
+    verbs:
+      - id: explain
+        definition: Clarify a concept or idea.
+      - id: interpret
+        definition: Make meaning from material.
+  - id: application
+    label: Application
+    order: 2
+    definition: Use, manage, or execute knowledge in tasks and problems.
+    example: Apply methods and critical thinking to a case.
+    cognitiveComplexity: Applied action
+    verbs:
+      - id: apply
+        definition: Use knowledge in a task or problem.
+      - id: critique
+        definition: Evaluate a product or performance.
+  - id: integration
+    label: Integration
+    order: 3
+    definition: Connect ideas, people, or domains into a larger whole.
+    example: Relate course concepts to another discipline.
+    cognitiveComplexity: Integrative synthesis
+    verbs:
+      - id: connect
+        definition: Link concepts or experiences meaningfully.
+      - id: relate
+        definition: Show how ideas fit together.
+  - id: human-dimension
+    label: Human Dimension
+    order: 4
+    definition: Learn about oneself and others in ways that affect judgment and action.
+    example: Reflect on how a decision affects collaborators and stakeholders.
+    cognitiveComplexity: Personal and social insight
+    verbs:
+      - id: reflect
+        definition: Consider implications for self or others.
+      - id: collaborate
+        definition: Work with others in a purposeful way.
+  - id: caring
+    label: Caring
+    order: 5
+    definition: Develop new feelings, interests, or values related to the subject.
+    example: Demonstrate commitment to ethical practice.
+    cognitiveComplexity: Value formation
+    verbs:
+      - id: value
+        definition: Attach importance to a concept or practice.
+      - id: advocate
+        definition: Support a principle or cause intentionally.
+  - id: learning-how-to-learn
+    label: Learning How to Learn
+    order: 6
+    definition: Become a better student, inquirer, and self-directed learner.
+    example: Adapt strategies for continuous improvement.
+    cognitiveComplexity: Metacognitive growth
+    verbs:
+      - id: self-assess
+        definition: Judge one's own learning and next steps.
+      - id: adapt
+        definition: Change learning strategy based on feedback.
