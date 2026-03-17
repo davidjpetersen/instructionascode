@@ -1,13 +1,16 @@
 ---
+import type { GetStaticPaths } from 'astro';
 import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
 
 import { LinkCard } from '@astrojs/starlight/components';
 import Breadcrumbs from '../../../components/Breadcrumbs.astro';
 import { getKnowledgeGraph } from '../../../lib/knowledgeGraph';
+import { getTaxonomyStaticPaths } from '../../../lib/taxonomyRouteParams';
 import { buildTaxonomySidebar } from '../../../lib/taxonomyUi';
 import CopyableUri from '../../../components/CopyableUri.astro';
 
-export const prerender = false;
+export const prerender = true;
+export const getStaticPaths: GetStaticPaths = getTaxonomyStaticPaths;
 
 const graph = await getKnowledgeGraph();
 const sidebar = buildTaxonomySidebar(graph);
